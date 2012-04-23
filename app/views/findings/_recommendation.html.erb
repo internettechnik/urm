@@ -2,7 +2,7 @@
 <div id="finding_<%=finding.id%>" class="border_finding">
 
 	<!-- SECTION SINGLE Task Summary (modifiable details) -->
-	<div class="toggle_task" >
+	<div class="toggle_finding" >
 		<%= form_for(finding, 
 				:remote => true, 
 				:html => {:class => "edit_finding_#{finding.id}"}
@@ -90,7 +90,7 @@
 			
 			
 			<!-- SECTION ALL DOCUMENTS for this finding -->
-			<div class="toggle_documents">
+			<div class="toggle_all_documents">
 				<div class="border_documents">
 					<%= link_to_function(t(:'documents.section_title'),
 						"$('#all_documents_for_finding_#{finding.id}').toggle()") %>:

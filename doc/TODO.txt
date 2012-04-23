@@ -99,7 +99,8 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * pretty look (optional skinning)
 * concise and powerful entry forms
 * drag and drop
-* video preview with timestamp selection
+* video preview with timestamp input 
+	maybe fancy timestamp selection
 * pretty xsl and css for exported Reports (HTML)
 * add info about "overall project status" 
   	missing entries in %, data entered

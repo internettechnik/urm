@@ -246,7 +246,7 @@ en:
                 add_hint:               "Add another evaluator (reviewer, heuristic expert) to the report..."
         reviewer:
                 person:             "evaluator"
-                section_title:      "Evaluators"
+                section_title:      "Evaluator"
                 label_name:             "Name"
                 hint_name:              "Name"
                 label_annotation:       "Annotation"

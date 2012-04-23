@@ -2,7 +2,7 @@
 <div id="person_<%=person.id%>" class="border_person">
 
 	<!-- SECTION SINGLE Person Summary (modifiable details) -->
-	<div class="toggle_person" >
+	<div class="toggle_person">
 		<%= form_for(person, 
 				:remote => true, 
 				:html => {:class => "edit_person_#{person.id}"}

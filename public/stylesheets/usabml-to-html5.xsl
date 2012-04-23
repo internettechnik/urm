@@ -714,7 +714,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<xsl:for-each select="setting/device">
+				<xsl:for-each select="device">
 					<xsl:sort select="attribute::devicetype"/>
 					<tr>
 						<td>
@@ -1200,7 +1200,7 @@
 			</thead>
 			<tbody>
 			<xsl:for-each select="finding">
-				<xsl:sort select="@priority" order="ascending"/>
+				<xsl:sort select="@priority" order="descending"/>
 			<xsl:if test="@findingtype = 'recommendation'">
 				<xsl:call-template name="onefindingastablewithvideo" />
 			</xsl:if>
@@ -1288,8 +1288,8 @@
 			</td>
 			<td>
 				<!-- TODO:--> <br />
-				Videoclip-Timestamp <xsl:value-of select="./timestamp"/>00:00 (TP?)<br />
-				00:00 (TP?)
+				Videoclip-Timestamp <xsl:value-of select="./timestamp"/>02:10 (TP2)<br />
+				12:30 (TP7)
 			</td>
 		</tr>
 	</xsl:template>

@@ -1,6 +1,10 @@
+attrib_hash = {:devicetype => device.devicetype}
+
 # Note for HE the "device" will be assigned to a person via personid attribute
 #  (not necessary with TA)
-xml.device(:devicetype => device.devicetype) do # devicetype: cam/location/pc
+attrib_hash[:personid] = "person_#{device.person_id}" if device.report.testtype == "he"
+
+xml.device(attrib_hash) do # devicetype: cam/location/pc
     xml.title       device.title        # REQUIRED  settings... and so on
     xml.description device.description  # REQUIRED  settings... and so on
     if ("docgiven"== "true")# TODO: OPTIONAL if available
