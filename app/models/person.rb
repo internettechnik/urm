@@ -7,7 +7,6 @@ class Person < ActiveRecord::Base
   belongs_to :report
   belongs_to :persontype
   
-	has_many :attributes_of_persons,  :dependent => :destroy
   has_many :interviews,             :dependent => :destroy  
   has_many :videos,                 :dependent => :destroy  
   has_many :devices,                :dependent => :destroy  
@@ -15,9 +14,16 @@ class Person < ActiveRecord::Base
   has_many :answers,                :dependent => :destroy
   has_many :transcript_events,      :dependent => :destroy
 
+	has_many :attributes_of_persons,  :dependent => :destroy
 	has_many :custom_attributes,      :through => :attributes_of_persons
-  	
+  
+  has_many :issue_foundby_persons
+  has_many :issues,                 :through => :issue_foundby_persons
  
+  has_many :severity_ofissuefoundby_persons
+ 
+  
+  
   
   validate :init_defaults
     

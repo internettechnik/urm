@@ -16,7 +16,8 @@ class Report < ActiveRecord::Base
   has_many    :answers,           :dependent => :destroy
 	has_many    :transcript_events, :dependent => :destroy
 	has_many    :findings,          :dependent => :destroy
-	has_many    :heuristics,        :dependent => :destroy
+  has_many    :heuristics,        :dependent => :destroy
+  has_many    :issues,            :dependent => :destroy
 	
   
   # m:n 

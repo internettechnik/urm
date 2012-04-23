@@ -13,7 +13,11 @@ class Document < ActiveRecord::Base
 	has_many :documents_of_findings
 	has_many :findings, :through => :documents_of_findings
 	
+  # a heuristic "issue" might hold several documents
+	has_many :documents_of_issues
+	has_many :issues, :through => :documents_of_issues
 	
+  
 	has_attached_file :attachment
 	
 	def summary

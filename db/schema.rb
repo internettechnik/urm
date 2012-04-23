@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120415172359) do
+ActiveRecord::Schema.define(:version => 20120423112255) do
 
   create_table "answers", :force => true do |t|
     t.integer  "report_id"
@@ -81,6 +81,13 @@ ActiveRecord::Schema.define(:version => 20120415172359) do
     t.datetime "updated_at"
   end
 
+  create_table "documents_of_issues", :force => true do |t|
+    t.integer  "document_id"
+    t.integer  "issue_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "eventcodes", :force => true do |t|
     t.string   "code"
     t.text     "description"
@@ -111,6 +118,26 @@ ActiveRecord::Schema.define(:version => 20120415172359) do
     t.datetime "updated_at"
     t.integer  "report_id"
     t.integer  "person_id"
+  end
+
+  create_table "issue_foundby_people", :force => true do |t|
+    t.integer  "issue_id"
+    t.integer  "person_id"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "issues", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "heuristic_id"
+    t.string   "direction"
+    t.text     "reproduce"
+    t.text     "notice"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "report_id"
   end
 
   create_table "people", :force => true do |t|
@@ -215,6 +242,15 @@ ActiveRecord::Schema.define(:version => 20120415172359) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "severity_ofissuefoundby_people", :force => true do |t|
+    t.integer  "issue_id"
+    t.integer  "person_id"
+    t.integer  "severity"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "task_results", :force => true do |t|
     t.integer  "report_id"
