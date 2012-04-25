@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  report_id: 1
+  swproject: MyString
+  swversion: MyString
+  swpackage: MyString
+  swclass: MyString
+  swmethod: MyString
+  swlineno: MyString
+  notice: MyText
+
+two:
+  report_id: 1
+  swproject: MyString
+  swversion: MyString
+  swpackage: MyString
+  swclass: MyString
+  swmethod: MyString
+  swlineno: MyString
+  notice: MyText

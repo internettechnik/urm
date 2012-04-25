@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423112255) do
+ActiveRecord::Schema.define(:version => 20120423212228) do
 
   create_table "answers", :force => true do |t|
     t.integer  "report_id"
@@ -34,6 +34,26 @@ ActiveRecord::Schema.define(:version => 20120423112255) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "report_id"
+  end
+
+  create_table "codereferences", :force => true do |t|
+    t.integer  "report_id"
+    t.string   "swproject"
+    t.string   "swversion"
+    t.string   "swpackage"
+    t.string   "swclass"
+    t.string   "swmethod"
+    t.string   "swlineno"
+    t.text     "notice"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "codereferences_of_issues", :force => true do |t|
+    t.integer  "codereference_id"
+    t.integer  "issue_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "custom_attributes", :force => true do |t|

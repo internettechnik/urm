@@ -19,6 +19,7 @@ class Report < ActiveRecord::Base
   has_many    :heuristics,        :dependent => :destroy
   has_many    :issues,            :dependent => :destroy
 	
+  has_many    :codereferences,    :dependent => :destroy
   
   # m:n 
   has_many :document_of_reports
