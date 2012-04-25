@@ -24,7 +24,7 @@ gem 'railties'
 gem 'jquery-rails'
 
 # 2012-01-29 for Javascript Execution via Ruby
-gem 'execjs'
+#gem 'execjs'
 gem 'therubyracer'
 
 # 2012-01-04 for file attachments:
