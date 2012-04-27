@@ -7,7 +7,7 @@ module FindingHelper
   # summary information about ALL documents of this finding
   def alldocuments_summary(finding)
     docs=finding.documents
-    docs.size.to_s+" doc: "+docs.collect {|doc|  doc.summary.to_s}.join(", ")
+    "(#{docs.size}): "+docs.collect {|doc|  doc.summary.to_s}.join(", ")
   end
   
   
@@ -15,16 +15,16 @@ module FindingHelper
   def allfindings_summary(report)
     return if report.nil?
     fds=report.findings.where("findingtype=?", 'positive')
-    pluralize(fds.size, t(:'findings.finding.finding') ) + 
-      ": "+fds.collect {|fdg| fdg.title.to_s.truncate(15)}.join(", ")
+    #pluralize(fds.size, t(:'findings.finding.finding') ) + 
+    "(#{fds.size}): "+fds.collect {|fdg| fdg.title.to_s.truncate(15)}.join(", ")
   end
   
   # summary information about ALL the recommendations (=negative findings)
   def allrecommendations_summary(report)
     return if report.nil?
     fds=report.findings.where("findingtype=?", 'recommendation')
-    pluralize(fds.size, t(:'findings.recommendation.finding') ) + 
-      ": "+fds.collect {|fdg| fdg.title.to_s.truncate(15) }.join(", ")
+    #pluralize(fds.size, t(:'findings.recommendation.finding') ) + 
+    "(#{fds.size}): "+fds.collect {|fdg| fdg.title.to_s.truncate(15) }.join(", ")
   end
   
 end

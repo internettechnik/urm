@@ -9,8 +9,9 @@ module TaskResultHelper
   def alltask_results_summary(report)
     return if report.nil?
     results=report.task_results
-    results.size.to_s+" tasks completions: "+results.collect { |r| 
-      "#{ r.person ? r.person.name.to_s[0,10] : ''}: #{ r.task ? r.task.title.to_s[0,20] : ''} (#{r.completion}%)" 
+    #results.size.to_s+" tasks completions: "
+    "(#{results.size}): "+results.collect { |r| 
+      "#{ r.person ? r.person.name.to_s.truncate(10) : ''}: #{ r.task ? r.task.title.to_s[0,20] : ''} (#{r.completion}%)" 
     }.join(", ")
   end
   

@@ -8,7 +8,8 @@ module PersonHelper
   # summary information about ALL persons  testusers (=person with persontype_id ==1 .name="user")
   def alltestusers_summary(report)
     ps=report.persons.where("persontype_id=?",1)
-    pluralize(ps.size,I18n.t(:'persons.testuser.person') ) + ": "+ps.collect {|p|  p.summary.to_s}.join(", ")
+    #pluralize(ps.size,I18n.t(:'persons.testuser.person') ) + 
+    "(#{ps.size}): "+ps.collect {|p|  p.summary.to_s}.join(", ")
   end
 
   # summary information about ALL persons  reviewers 
@@ -20,14 +21,16 @@ module PersonHelper
   
   def allstaff_summary(report)
     ps=report.persons.where("persontype_id=?",2)
-    pluralize(ps.size,I18n.t(:'persons.staff.person') ) + ": "+ps.collect {|p|  p.summary.to_s}.join(", ")
+    #pluralize(ps.size,I18n.t(:'persons.staff.person') ) 
+    "(#{ps.size}): "+ps.collect {|p|  p.summary.to_s}.join(", ")
   end
   
   
   # summary information about ALL videos of a person
   def allvideos_of_person_summary(person)
     vds=person.videos
-    pluralize(vds.size,I18n.t(:'videos.video.video') ) + ": "+vds.collect {|vdo|  vdo.summary.to_s}.join(", ")
+    #pluralize(vds.size,I18n.t(:'videos.video.video') ) 
+    "(#{vds.size}): "+vds.collect {|vdo|  vdo.summary.to_s}.join(", ")
   end
   
   

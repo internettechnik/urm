@@ -1,4 +1,4 @@
-<%= count %> <%= t(:'answers.results') %>: 
+(<%= count %>): 
 <% for q in questions do 
   	vals=statistic[q.id] || [] # list of answer-values per question
 	avg= "%.1f" % ( vals.sum.to_f / vals.size ) # average

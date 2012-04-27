@@ -5,7 +5,7 @@
 		<%= link_to_function(t(:'persons.staff.section_title'),
 				toggler("#toggle_all_staff_of_",report)
 				) %>
-		<span id="summary_staff">: <%= allstaff_summary(report) %></span>
+		<span id="summary_staff"> <%= allstaff_summary(report) %></span>
 		<div id="toggle_all_staff_of_report_<%=report.id%>">
 			<%= render :partial =>'persons/staff', 
 				:collection => report.staff,

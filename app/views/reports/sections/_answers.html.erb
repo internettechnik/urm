@@ -2,7 +2,7 @@
 <div class = "border_answers">
 	<div class="toggle_all_answers">
 		<%= link_to_function("Questionnaire Results",
-			toggler("#toggle_all_answers_of_",report)) %>: 
+			toggler("#toggle_all_answers_of_",report)) %> 
 		<span id="summary_answers"><%= allanswers_summary(report) %></span>
 		<div id="toggle_all_answers_of_report_<%=report.id%>">
 			<%= render :partial =>'answers/answer', 

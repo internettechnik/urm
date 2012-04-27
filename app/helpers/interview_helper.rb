@@ -15,9 +15,10 @@ module InterviewHelper
   def allinterviews_summary(report)
     return if report.nil?
     ivs=report.interviews.sort
-    pluralize(ivs.size,I18n.t(:'interviews.interview.interview') ) + ": "+ivs.collect {|iv| "with "+(
+    #pluralize(ivs.size,I18n.t(:'interviews.interview.interview') ) + 
+    "(#{ivs.size}): "+ivs.collect {|iv| "with "+(
         (iv.person.nil?) ? "" : iv.person.name
-        ).to_s[0,15]+"..."}.join(", ")
+        ).truncate(15)}.join(", ")
   end
   
   

@@ -3,7 +3,7 @@
 	
 		<%= link_to_function(t(:'documents.section_title'),
 			toggler("#toggle_all_documents_of_",report)
-			) %>:
+			) %>
 		<span id="summary_documents"><%= alldocuments_summary(report) %></span>	
 		<div id="toggle_all_documents_of_report_<%=report.id%>">
 			<%= render :partial =>'documents/document', 

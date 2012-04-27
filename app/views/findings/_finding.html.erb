@@ -93,7 +93,7 @@
 			<div class="toggle_all_documents">
 				<div class="border_documents">
 					<%= link_to_function(t(:'documents.section_title'),
-						"$('#all_documents_for_finding_#{finding.id}').toggle()") %>:
+						"$('#all_documents_for_finding_#{finding.id}').toggle()") %>
 					<span id="summary_documents_of_finding_<%=finding.id%>"><%= alldocuments_summary_for_finding(finding) %></span>
 					<div id="all_documents_for_finding_<%=finding.id%>">
 						<%= render :partial =>'documents/document', 

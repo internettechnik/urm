@@ -499,7 +499,7 @@ en:
            updated:        "Successfully updated task completion (result) '%{summary}'."
            
   transcript_events:
-      section_title:    "Transcripts"
+      section_title:    "Transcript Events"
       add_link:         "Add Transcript Entry"
       add_hint:         "Add a new entry to this report."
       events:           "Events"

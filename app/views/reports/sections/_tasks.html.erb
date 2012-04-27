@@ -4,7 +4,7 @@
 	
 		<%= link_to_function("Tasks",
 			toggler("#toggle_all_tasks_of_",report)
-			) %>:
+			) %>
 		<span id="summary_tasks"><%= alltasks_summary(report) %></span>
 		<div id="toggle_all_tasks_of_report_<%=report.id%>">
 			<%= render :partial =>'tasks/task', 

@@ -10,14 +10,16 @@ module DocumentHelper
     return if report.nil?
     logger.debug("REPORT-ID="+report.id)
     docs=report.documents
-    pluralize(docs.size, t( :'documents.document') )+": "+
+    #pluralize(docs.size, t( :'documents.document') )+": "+
+    "(#{docs.size}): "+
       docs.collect { |d| d.summary }.join(", ")
   end
   
   def alldocuments_summary_for_finding(finding)
     return if finding.nil?
     docs=finding.documents
-    pluralize(docs.size, t( :'documents.document.document') )+": "+
+    #pluralize(docs.size, t( :'documents.document.document') )+": "+
+    "(#{docs.size}): "+
       docs.collect { |d| d.summary }.join(", ")
   end
   

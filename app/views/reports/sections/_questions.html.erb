@@ -4,7 +4,7 @@
 	
 		<%= link_to_function("Questionnaire",
 			toggler("#toggle_all_questions_of_",report)
-			) %>:
+			) %>
 			<span id="summary_questions"><%= allquestions_summary(report) %></span>
 		<div id="toggle_all_questions_of_report_<%=report.id%>">
 			<%= render :partial =>'questions/question', 

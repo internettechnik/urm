@@ -9,7 +9,8 @@ module TaskHelper
   def alltasks_summary(report)
     return if report.nil?
     tsks=report.tasks
-    pluralize(tsks.size, t(:'tasks.task.task') ) + ": "+tsks.collect { |t| t.summary }.join(",")
+    #pluralize(tsks.size, t(:'tasks.task.task') ) + 
+    "(#{tsks.size}): "+tsks.collect { |t| t.summary }.join(", ")
   end
   
 end

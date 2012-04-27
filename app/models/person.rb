@@ -28,7 +28,11 @@ class Person < ActiveRecord::Base
   validate :init_defaults
     
   def summary
-     self.alias.to_s+": "+self.name.to_s.truncate(15)
+    if self.alias.blank?
+      self.name.to_s.truncate(15)
+    else
+      self.alias.to_s+": "+self.name.to_s.truncate(15)
+    end
    end  
     
    def <=>(other)

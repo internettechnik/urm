@@ -4,7 +4,7 @@
 	
 		<%= link_to_function(t(:'findings.recommendations.section_title'),
 			toggler("#toggle_all_recommendations_of_",report)
-			) %>:
+			) %>
 		<span id="summary_recommendations"><%= allrecommendations_summary(report) %></span>
 		<div id="toggle_all_recommendations_of_report_<%=report.id%>">
 			<%= render :partial =>'findings/recommendation', 

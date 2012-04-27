@@ -9,7 +9,8 @@ module QuestionHelper
   def allquestions_summary(report)
     return if report.nil?
     qs=report.questions.sort
-    pluralize(qs.size,I18n.t(:'questions.question.question') ) + ": "+qs.collect {|a| a.order.to_s+": "+a.description.to_s[0,25]+"..."}.join(", ")
+    #pluralize(qs.size,I18n.t(:'questions.question.question') ) + 
+    "(#{qs.size}): "+qs.collect {|a| a.order.to_s+": "+a.description.truncate(25)}.join(", ")
   end
   
 end
