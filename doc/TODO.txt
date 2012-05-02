@@ -15,6 +15,7 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * findings of HE: allow to specify finding per heexpert 
 	with severity and reference to heuristic 
 * add git integration to view source-code
+* add svn integration to view source-code (optional!)
 * add (input of) references to source-code
 * add buttons to upload forms on the "proper time in the workflow"
 	e.g. after adding an author: button to "add signed consent form"
@@ -190,3 +191,7 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * uploading: A part of the AJAX "update the local preview" 
 	does not work with safari (works on firefox)?!
 * check if method "toggle_div" in "projects_controller" is still in use?
+* download (as zip)
+	include all the images and videos! (check for proper file-path)
+* on production server:
+	zip says: 0 byte (and/or error with safari: Frame load interrupted)
