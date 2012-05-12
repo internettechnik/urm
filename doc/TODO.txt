@@ -21,9 +21,15 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 	e.g. after adding an author: button to "add signed consent form"
 
 
-== Naming
+== Naming (Web GUI and for XSL/HTML Report)
 
-* Positive Finding versus Negative Finding with Recommendation
+* Positive Finding 
+	versus Negative Finding with Recommendation
+	Report:		
+		"Recommendations for Negative Findings" (4.5)
+		 (...list of top five problems (negative findings)
+		  and recommended solution...)
+		"Positive Findings" (4.4)"
 * edit hints and titles to match wording of keith
 * add German translations
 
@@ -65,7 +71,18 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * select the color for markers with RGB-chooser
 * allow free-text to explain reference for a transcript event
 * switch languages with a flag
-
+* dropdown for "Severity"
+	Severity (0..kein problem.... 4 catastrophic) siehe auch HE
+* with negative findings
+   		(field to specify problem is ok, but..)
+   		add field for your "recommendation"
+* for questions and answers
+	12345 might mean internal:
+		 0..4 Points OR 4..0 points (so we need mapping!)
+		 keith prefers: 3210123 0..6 or 6..0 
+		 	and postive always on the left (or always on the right)
+	(Note: there might just be 5 or six or even 7 options)
+	
 
 == Feature - Reports
 
@@ -89,7 +106,8 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * roles (staff: facilitator, computer operator, 
 		 logger/scribe, camera operator) for TA)
 * authorisation (view and export) for clients (=users)
-
+* allow password reset via mail with link
+* pretty design login/register/forgottenpwd/assignrules
 
 == Feature - Backup/Restore
 
@@ -176,7 +194,7 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 
 * should a document be assigned (to fingings) AND the report itself??
 	maybe we add documents to a finding
-	and do NOT ask for section in which to appear?
+	and do NOT ask for sectionstion in which to appear?
 * for custom attributes or dynamic questions, devicetypes,...: 
 	where to define/set up multi-language questions (in the database?)
 * for section HE
