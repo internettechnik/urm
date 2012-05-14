@@ -1,0 +1,142 @@
+<!-- SECTION SINGLE ISSUE -->
+<div id="issue_<%=issue.id%>" class="border_issue">
+
+	<!-- SECTION SINGLE ISSUE Summary (modifiable details) -->
+	<div class="toggle_issue" >
+		<%= form_for(issue, 
+				:remote => true, 
+				:html => {:class => "edit_issue_#{issue.id}"}
+				) do |frm_isu| %>
+
+			<%= link_to_function(t(:'.section_title'), toggler("#toggle_",issue) ) %>
+			<span id="summary_issue_<%=issue.id%>"><%= issue.summary %></span>
+			<%= link_to( image_tag("delete.png"), 
+					issue_path(issue),
+					:method		=> :delete,
+					:remote		=> true,
+					:confirm 	=> t(:'.delete_confirm',:summary => issue.summary),
+					:title 		=> t(:'.delete_hint',	:summary => issue.summary)  ) %>
+		<% end # of form issue (part I) %>	
+			<!-- SUB SECTION SINGLE ISSUE Details (modifiable details) -->
+			<div id="toggle_issue_<%=issue.id%>">
+				<%= form_for(issue, 
+						:remote => true, 
+						:html => {:class => "edit_issue_#{issue.id}"}
+						) do |frm_isu| %>
+				<table id="table_issue">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <%= frm_isu.label :title,t(:'.label_title') ,
+						 		:title => t(:'.hint_title') %> 
+						</td> 
+						<td>
+					 		<%= frm_isu.text_field :title,
+								:placeholder 	=> 	t(:'.hint_title') ,
+								:title			=> 	t(:'.hint_title') , 
+								:class => 'submittable'
+								 %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						    <%= frm_isu.label :reproduce, t(:'.label_reproduce') ,
+						 		:title => t(:'.hint_reproduce') %> 
+						</td> 
+						<td>
+				 			<%= frm_isu.text_field :reproduce,
+								:placeholder 	=> 	t(:'.hint_reproduce'),
+								:title			=> 	t(:'.hint_reproduce'),									
+								:class 			=> 'submittable'
+							 %>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+						    <%= frm_isu.label :description, 
+						 		t(:'.label_description') ,
+							 	:title => t(:'.hint_description') %> 
+						</td> 
+						<td>
+				 			<%= frm_isu.text_area :description,
+								:placeholder 	=> 	t(:'.hint_description'),
+								:title			=> 	t(:'.hint_description'),
+								:rows			=> 5,
+								:class 			=> 'submittable'
+							 %>
+						</td>
+					</tr>
+				</table>
+			<% end # of form issue (part II) %>
+			
+			
+			<!-- SECTION ALL VIDEO CLIPS for this issue -->
+			<!--TODO -->
+			<table id="table_issue">
+				<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+				<tr>
+					<td>
+					    <%#= frm_fdg.label .... TODO: Videoclips with timestamps from-to for each test person%> 
+						Clips
+					</td> 
+					<td>
+				 		<!--TODO--><small>not available yet: assign (multiple) video-clips per heuristic issue, per user!</small>
+					</td>
+				</tr>
+				
+			</table>
+			
+			
+			
+			<!-- SECTION ALL DOCUMENTS for this issue -->
+			<div class="toggle_all_documents">
+				<div class="border_documents">
+					<%= link_to_function(t(:'documents.section_title'),
+						"$('#all_documents_for_issue_#{issue.id}').toggle()") %>
+					<span id="summary_documents_of_issue_<%=issue.id%>"><%= alldocuments_summary_for_issue(issue) %></span>
+					<div id="all_documents_for_issue_<%=issue.id%>">
+						<%= render :partial =>'documents/document', 
+							:collection => issue.documents,
+							:locals => {:report_id => nil,
+								 		:issue_id => issue.id}	%>  
+
+						<!-- html for new document of this issue will be inserted here -->
+						<div id="new_document_for_issue_<%=issue.id%>"></div>
+
+
+						<%# TODO: ADD (display ALL possible documents for this issue e.g. dropdown)
+						  	TODO: instead of optional link to manage documents %>
+
+						<%= link_to( image_tag('add.png')+t(:'documents.add_link'),
+								new_document_path(:issue_id => issue.id),
+								:remote		=> true,
+								:title =>t(:'documents.add_hint') ) %>
+					</div> <!-- end all documents-->
+				</div><!-- end border for all documents-->
+			</div><!-- end toggle all documents-->
+		
+			
+			
+			<%#
+				<table id="table_issue">
+					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					<tr>
+						<td>
+						    <% #= frm_fdg.label :codereferences, "Codereferences" % > 
+							TODO: Codereferences
+						</td> 
+						<td>
+					 		<!--TODO--><small>(not available yet: assign multiple code-references!)</small>
+						</td>
+					</tr>
+					
+				</table>
+			%>	
+			</div> <!-- end of id toggle_issue -->
+		
+	</div> <!-- end of class toggle_issue -->
+
+	<div id="issue_message_<%=issue.id%>" class="ajax_message"></div>
+	
+</div> <!-- end of div issue-->

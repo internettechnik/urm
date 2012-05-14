@@ -1,0 +1,8 @@
+$( "<%= escape_javascript( \
+	render( :partial => "document", :locals => { :document => @document, :report_id=>nil, :issue_id=>issue.id} )\
+	) %>" ).insertBefore("#new_document_for_issue_<%=issue.id%>")
+/* Highlight the new doc */
+$("#toggle_document_<%= @document.id %>").effect("highlight", {}, 3000);
+
+$("#summary_documents_of_issue_<%=issue.id%>" ).html("<%=alldocuments_summary_for_issue(issue) %>");
+$("#toggle_document_<%= @document.id %>").find("#document_listat").focus();

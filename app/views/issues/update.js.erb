@@ -1,0 +1,7 @@
+$("#summary_issue_<%=issue.id%>" ).html("<%=issue.summary%>");
+$("#summary_issues" ).html("<%=allissues_summary(issue.report) %>");
+
+<% msg = t(:'.updated', :summary => @issue.summary) %>
+showToast("<%= escape_javascript(msg) %>");
+
+resetHighlightingForElems('.edit_issue_<%=issue.id%>');

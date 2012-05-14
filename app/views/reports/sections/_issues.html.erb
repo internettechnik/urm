@@ -1,0 +1,22 @@
+<a name="issues" />
+<div class = "border_issues">
+	<div class="toggle_all_issues">
+	
+		<%= link_to_function(t(:'issues.section_title'),
+			toggler("#toggle_all_issues_of_",report)
+			) %>
+		<span id="summary_issues"><%= allissues_summary(report) %></span>
+		<div id="toggle_all_issues_of_report_<%=report.id%>">
+			<%= render :partial =>'issues/issue', 
+				:collection => report.issues	%>  
+
+			<!-- html for new issue of this report will be inserted here -->
+			<div id="new_issue_for_report_<%=report.id%>"></div>
+
+			<%= link_to( image_tag('add.png')+t(:'issues.add_link'),
+					new_issue_path(:report_id => report.id),
+					:remote		=> true,
+					:title =>t(:'issues.add_hint')) %>
+		</div> <!-- end all issues-->
+	</div><!-- end toggle for all issues-->
+</div><!-- end border all issues-->

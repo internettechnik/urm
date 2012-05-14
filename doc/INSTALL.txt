@@ -1,0 +1,13 @@
+Usability Reporting Manager (URM)
+
+installation and usage
+ ... checkout from (git) repository https://github.com/internettechnik/urm
+ ... setup and configure (e.g. mysql) database
+ ... run ruby on rails application (on standalone server or e.g. on apache)
+ ... use any modern browser to visit the web page
+
+---
+by internettechnik, 2010 http://itm.fh-joanneum.at/usabml/urm
+Copyright (C) 2012 internettechnik 
+Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
+
