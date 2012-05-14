@@ -269,6 +269,7 @@ label{
 .border_findings,
 .border_documents,
 .border_heuristics,
+.border_issues,
 .border_transcript_events {
 	width:95%;
 	border-top-right-radius: 40px; border-bottom-right-radius: 0px;
@@ -297,7 +298,7 @@ label{
 .border_documents{ 			padding-left: 4px; margin-left:0%; }
 .border_transcript_events{ 	padding-left: 4px; margin-left:0%; }
 .border_heuristics{ 		padding-left: 4px; margin-left:0%; }
-
+.border_issues{ 			padding-left: 4px; margin-left:0%; }
 
 /* better call it: indent for ... (instead of 'toggle')*/
 .toggle_project,
@@ -328,8 +329,10 @@ label{
 .toggle_document,
 .toggle_heuristic,
 .toggle_all_heuristics,
-.toggle_all_transcript_events,
-.toggle_transcript_event{
+.toggle_issue,
+.toggle_all_issues,
+.toggle_transcript_event,
+.toggle_all_transcript_events{
 	width:98%;
 	vertical-align: top;
 	border-top-right-radius: 40px; 
@@ -432,6 +435,7 @@ label{
 #table_finding,
 #table_document,
 #table_heuristic,
+#table_issue,
 #table_transcript_event{ 
 	width:96%;
 	border-top-right-radius: 40px; 

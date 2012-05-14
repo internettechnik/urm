@@ -82,7 +82,8 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 		 keith prefers: 3210123 0..6 or 6..0 
 		 	and postive always on the left (or always on the right)
 	(Note: there might just be 5 or six or even 7 options)
-	
+* task completion
+	calculate duration (from end-start time-stamps)
 
 == Feature - Reports
 

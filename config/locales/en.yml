@@ -217,6 +217,27 @@ en:
                     hint_question:      "Question"
                     hint_answer:        "Answer"
           
+  # heuristic issue (for HE)
+  issues:
+      section_title:          "Heuristic Issues"
+      add_link:               "Add Heuristic Issue Found"
+      add_hint:               "Add a new heuristic issue to this report."
+      issue: 
+          finding:            "issue"
+          section_title:      "Heuristic Issue"
+          delete_confirm:     "Are you sure to delete heuristic issue '%{summary}'?"
+          delete_hint:        "Remove heuristic issue '%{summary}'..."
+          label_title:        "Title"
+          label_findingtype:  "Type"
+          label_reproduce:    "Reproduce"
+          label_description:  "Description"
+          hint_title:         "A short title for the heuristic issue"
+          hint_reproduce:     "Steps to reproduce this heuristic issue"
+          hint_description:   "Extensive description for this heuristic issue"
+      update:
+          updated:        "Successfully updated heuristic issue '%{summary}'." 
+
+
   # person such as test user..., but note: could also be a HE-expert 
   persons:
         staff:

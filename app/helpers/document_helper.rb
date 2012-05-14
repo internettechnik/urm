@@ -24,4 +24,13 @@ module DocumentHelper
   end
   
   
+  def alldocuments_summary_for_issue(issue)
+    return if issue.nil?
+    docs=issue.documents
+    #pluralize(docs.size, t( :'documents.document.document') )+": "+
+    "(#{docs.size}): "+
+      docs.collect { |d| d.summary }.join(", ")
+  end
+  
+  
 end

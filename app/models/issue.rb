@@ -15,4 +15,13 @@ class Issue < ActiveRecord::Base
 	has_many :codereferences_of_issues
 	has_many :codereferences, :through => :codereferences_of_issues
   
+  
+  
+	def summary
+	  t=self.title.to_s.truncate(35) || ""
+	  d= self.description.to_s.empty? ? "" : ": "+self.description.to_s.truncate(25)
+	  t+d
+  end
+  
+  
 end

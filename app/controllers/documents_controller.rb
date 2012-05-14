@@ -25,6 +25,24 @@ class DocumentsController < ApplicationController
         end
      end
      
+     
+     # add document to issue
+     if params[:issue_id]
+        @issue = Issue.find(params[:issue_id])
+        logger.info("ajax-add a new document for given heuristic issue...")
+        @document = Document.new
+        @issue.documents.push(@document)
+
+        respond_to do | format |  
+           format.js {
+             render( 'new_for_issue', :locals=>{:document=>@document, :issue=>@issue} ) 
+           }  
+        end
+     end
+     
+     
+     
+     
      # add document to report
      if params[:report_id]
         @report = Report.find(params[:report_id])
@@ -46,6 +64,7 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
     r_id=params[:document][:report_id]; params[:document].delete(:report_id)
     f_id=params[:document][:finding_id]; params[:document].delete(:finding_id)
+    i_id=params[:document][:issue_id]; params[:document].delete(:issue_id)
     logger.debug("params[:document] = "+params[:document].to_s)
    
     if params[:remotipart_submitted] # got attachment ?
@@ -78,12 +97,29 @@ class DocumentsController < ApplicationController
                             :finding => @f
                     }) 
     end
+    
+    # update document to issue
+    if i_id
+     logger.debug("params[:issue_id] = "+i_id.to_s)
+     @i = Issue.find( i_id )
+     return render('update_for_issue', 
+                      :locals=>{:n => "document", 
+                            :o=> @document,
+                            :issue => @i
+                    }) 
+    end
+    
+    
+    
+    
+    
   end
   
   def destroy
      @document = Document.find(params[:id])
      r_id=params[:report_id] 
      f_id=params[:finding_id]
+     i_id=params[:issue_id]
      
      puts("LOG: ajax-remove current document #{@document.summary }")
      @document.delete
@@ -108,6 +144,19 @@ class DocumentsController < ApplicationController
                              :finding => @f
                      }) 
      end
+  
+  
+     # destroy document to issue
+     if i_id
+      @i = Issue.find( i_id )
+      logger.debug("Issue id="+@i.to_s)
+      return render('destroy_for_issue', 
+                       :locals=>{:n => "document", 
+                             :o=> @document,
+                             :issue => @i
+                     }) 
+     end
+  
   
   
    end

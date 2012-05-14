@@ -9,15 +9,21 @@
 				) do |frm_doc| %>
 				
 		
-			<%# where does this document belong to: report or finding? (store in hidden field) %>
-			<% if report_id  %><%=frm_doc.hidden_field(:report_id, :value => report_id) %><%end %>
-			<% if finding_id %><%=frm_doc.hidden_field(:finding_id, :value  => finding_id) %><%end %>	
-				
+			<% 	# where does this document belong to: report or finding or issue? (store in hidden field)	
+				report_id =nil 	unless defined?(report_id )
+				finding_id=nil 	unless defined?(finding_id) 
+				issue_id  =nil  unless defined?(issue_id  ) 
+				# doc belongs to report / finding / issue
+			    current_id_hash =  {:finding_id => finding_id } unless finding_id.nil?
+			    current_id_hash = {:issue_id    => issue_id   } unless issue_id.nil?
+			    current_id_hash = {:report_id   => report_id  } unless report_id.nil?
+			%>
+			<%=frm_doc.hidden_field( current_id_hash.keys[0], :value => current_id_hash.values[0] ) %>
+
 			<%= link_to_function(t(:'documents.document.section_title'),
 				toggler("#toggle_",document) ) %>
 			<span id="summary_document_<%=document.id%>"><%= document.summary %></span>
-			<%= link_to( image_tag("delete.png"), 
-					(report_id) ? document_path(document, :report_id => report_id )	: document_path(document, :finding_id => finding_id ),
+			<%= link_to( image_tag("delete.png"), document_path(document, current_id_hash),
 					:method		=> :delete,
 					:remote		=> true,
 					:confirm 	=> t(:'.delete_confirm',	:summary => document.summary),

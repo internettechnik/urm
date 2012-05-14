@@ -79,11 +79,20 @@
 
 
 
-				<!-- SECTION TEXT for heuristic issues-->
+				<!-- SECTION TEXT for heuristic issues -->
 				<%= render( :partial 	=> "reports/sections/report_part5b_heuristicissues",
 							:locals 	=> { :report => report}			) if report.testtype == "he" %>
 				
-				<!-- TODO for HE: allow to specify finding per heexpert with severity and reference to heuristic -->
+				
+				<!-- TODO for HE: allow to specify finding per heexpert 
+				                  with severity and reference to heuristic -->
+				<!-- SECTION ALL HEURISTIC ISSUES -->
+				<%= render( :partial 	=> "reports/sections/issues",
+							:locals 	=> { :report => report}			) if report.testtype == "he" %>
+				
+				
+				
+				
 				<!-- SECTION ALL FINDINGS (POSITIVE ones!) -->
 				<%= render( :partial 	=> "reports/sections/findings",
 							:locals 	=> { :report => report}			)%>
