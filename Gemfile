@@ -39,11 +39,11 @@ gem 'railties'
 gem 'jquery-rails'
 
 # 2012-01-29 for Javascript Execution via Ruby
-#gem 'execjs'
+gem 'execjs' # we know this works locally AND on df-server !
 # 2013-01-01: needed for therubyracer-installation
-# (i hope this will work on the df-server then...)
-gem 'libv8', '~> 3.11.8' 
-gem 'therubyracer'
+# (UNFORTUNATELY therubyrace nor libv8 do NOT work on the df-server)
+#gem 'libv8', '~> 3.11.8' 
+#gem 'therubyracer'
 
 # 2012-01-04 for file attachments:
 # 2013-01-01 paperclip max vesion 2.7.x for ruby 1.8.7
