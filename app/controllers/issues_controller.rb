@@ -38,9 +38,12 @@ class IssuesController < ApplicationController
 
   def update
     @issue = Issue.find(params[:id])
+    logger.debug( "ajax-update current heuristic issue #{@issue.summary}" )
 
-    logger.debug("ajax-update current heuristic issue #{@issue.summary }")
-
+    # get (and SET or REMOVE all the reviewers of this issue)
+    params[:issue][:person_ids] ||= []
+    
+    params[:issue].delete(:persons)
     @issue.update_attributes(params[:issue])
     
     render(:locals=>{:issue=>@issue}) 

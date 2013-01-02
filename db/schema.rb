@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423212228) do
+ActiveRecord::Schema.define(:version => 20120829113917) do
 
   create_table "answers", :force => true do |t|
     t.integer  "report_id"
@@ -152,7 +152,6 @@ ActiveRecord::Schema.define(:version => 20120423212228) do
     t.string   "title"
     t.text     "description"
     t.integer  "heuristic_id"
-    t.string   "direction"
     t.text     "reproduce"
     t.text     "notice"
     t.datetime "created_at"
@@ -275,7 +274,7 @@ ActiveRecord::Schema.define(:version => 20120423212228) do
   create_table "task_results", :force => true do |t|
     t.integer  "report_id"
     t.integer  "person_id"
-    t.integer  "durationactual"
+    t.integer  "actualduration"
     t.integer  "completion"
     t.boolean  "withassistance"
     t.text     "notice"
@@ -293,7 +292,7 @@ ActiveRecord::Schema.define(:version => 20120423212228) do
     t.text     "prerequisite"
     t.text     "possiblesolutionpath"
     t.text     "endingcriteria"
-    t.integer  "durationscheduled"
+    t.integer  "scheduledduration"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "report_id"

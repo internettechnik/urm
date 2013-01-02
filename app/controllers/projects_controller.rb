@@ -105,7 +105,8 @@ class ProjectsController < ApplicationController
     # optionally we add the stylesheet instruction:
     # http://localhost:3000/projects/1.xml?includestyle=true
     @includestyle=params[:includestyle] || false
-
+    
+    
     respond_to do |format|
       format.xml  # use the custom show.xml.builder
     end

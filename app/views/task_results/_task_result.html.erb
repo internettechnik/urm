@@ -26,9 +26,12 @@
 					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
 					<tr>
 						<td>
-						    <%= f.label :person_id, "Person" %> 
+						    <%= f.label :person_id, t(:'.label_person') %> 
 						</td> 
 						<td>
+							<%# TODO: let us insert/update a person who found the heuristic issue 
+									 so check code in: issue_controller update 
+							%>
 							<%= f.collection_select(:person_id, 
 									task_result.report.persons, :id, :summary, 
 									options={:prompt => "Select the person"},
@@ -38,7 +41,7 @@
 					</tr>
 					<tr>
 						<td>
-						    <%= f.label :task_id, "Task" %> 
+						    <%= f.label :task_id, t(:'.label_task') %> 
 						</td> 
 						<td>
 							<%= f.collection_select(:task_id, 
@@ -49,7 +52,7 @@
 					</tr>
 					<tr>
 						<td>
-						    <%= f.label :start, "Start" %> 
+						    <%= f.label :start, t(:'.label_start') %> 
 						</td> 
 						<td>
 					 		<%= f.text_field :start, 
@@ -62,7 +65,7 @@
 					</tr>
 					<tr>
 						<td>
-						    <%= f.label :end, "End" %> 
+						    <%= f.label :end, t(:'.label_end') %> 
 						</td> 
 						<td>
 					 		<%= f.text_field :end, 
@@ -75,10 +78,10 @@
 					</tr>
 					<tr>
 						<td>
-						    <%= f.label :durationactual, "Duration" %> 
+						    <%= f.label :actualduration, t(:'.label_duration') %> 
 						</td> 
 						<td>
-					 		<%= f.text_field :durationactual, 
+					 		<%= f.text_field :actualduration, 
 									:placeholder => "actual time needed to complete the task",
 									:title => "time needed to complete the task",
 									:type => 'number',
@@ -89,7 +92,7 @@
 
 					<tr>
 						<td>
-						    <%= f.label :completion, "Completed" %> 
+						    <%= f.label :completion, t(:'.label_completed') %> 
 						</td> 
 						<td>
 					 		<%= f.text_field :completion, 
@@ -103,7 +106,7 @@
 
 					<tr>
 						<td>
-						    <%= f.label :withassistance, "With assistance" %> 
+						    <%= f.label :withassistance, t(:'.label_with_assistance') %> 
 						</td> 
 						<td>
 					 		<%= f.select(:withassistance, {	"YES"=>"YES", 
@@ -116,7 +119,7 @@
 
 					<tr>
 						<td>
-						    <%= f.label :title, "Notice" %> 
+						    <%= f.label :title, t(:'.label_notice') %> 
 						</td> 
 						<td>
 					 		<%= f.text_field :notice, 

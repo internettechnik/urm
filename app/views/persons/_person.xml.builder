@@ -1,10 +1,10 @@
 pt=(person.persontype) ? person.persontype.name : "unknown" # user, heexpert, staff
 xml.person(:persontype => pt, :id=>"person_"+person.id.to_s) do
-			xml.name person.name      # required
-			xml.alias person.alias    # required
-			xml.gender person.gender  # required
-			xml.age person.age        # OPTIONAL
-			xml.timestamp person.timestamp  # required
+			xml.name   person.name      # required
+			xml.alias  person.alias     if person.alias   # required for user (not required for staff)
+			xml.gender person.gender    if person.gender  # required for user (not required for staff)
+			xml.age    person.age       if person.age     # OPTIONAL
+			xml.timestamp person.timestamp                # required
 			
 			# TODO: output role(s?) (for staff only): interviewer, observer,...
 			if (person.persontype_id==2) # persontype 1=testuser 2=staff 3=heexpert

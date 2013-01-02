@@ -9,9 +9,7 @@ if @includestyle
 end
 
 xml.comment! "by jf. generated "+Time.now.strftime("%Y-%m-%d %H:%m")
-xml.project(:id         => @project.id, 
-            "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
-            "xsi:noNamespaceSchemaLocation" => "../usabml-ta.xsd") do |pr|
+xml.project(:id         => @project.id) do |pr|
 
 	pr.title @project.title
 

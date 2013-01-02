@@ -6,5 +6,5 @@ xml.task(:id => "task_"+task.id.to_s, :order => task.order || 0) do
   if task.endingcriteria 
       xml.endingcriteria        task.endingcriteria    # optional
   end
-  xml.durationscheduled     task.durationscheduled    # optional
+  xml.scheduledduration     task.scheduledduration    # optional
 end # of single task

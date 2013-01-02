@@ -25,6 +25,8 @@
 						) do |frm_isu| %>
 				<table id="table_issue">
 					<tr><th class="leftcolumn"></th><!-- left column fixed width with css --></tr>
+					
+
 					<tr>
 						<td>
 						    <%= frm_isu.label :title,t(:'.label_title') ,
@@ -67,6 +69,62 @@
 							 %>
 						</td>
 					</tr>
+					
+					<tr>
+						<td>
+						    <%= frm_isu.label :heuristic_id, "Heuristic" %> 
+						</td> 
+						<td>
+							<%= frm_isu.collection_select(:heuristic_id, 
+									issue.report.heuristics, :id, :summary, 
+									options={:prompt => "Select the heuristic"},
+									:class => 'submittable'
+									 ) %>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+						    <%= frm_isu.label :persons, "Add reviewer who found this issue" %> 
+						</td> 
+						<td>
+							
+							<% for pers in issue.report.reviewers.sort %>
+							  <br /><%= pers.name %>:<%= check_box_tag( 
+							  				"issue[person_ids][]",
+							  	 			pers.id, 
+											issue.persons.include?(pers),
+											:class 			=> 'submittable tbl_data_short'
+											) %>
+							<% end %>
+							
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+						    <%= frm_isu.label :persons, "Add severity assigned to by reviewer" %> 
+						</td> 
+						<td>
+							<%# TODO: let the user drag and drop reviewer and severities....%>
+							<%#= frm_isu.collection_select(
+									:severity_ofissuefoundby_person_ids, 
+									issue.report.reviewers, 
+									:id, 
+									:summary, 
+									options={:prompt => "Select the person"},
+									:class => 'submittable'
+									 ) %>
+							
+							All in all, this issue was rated by: 
+							<%= frm_isu.label( 
+								:formatted_list_of_persons, 
+								issue.formatted_list_of_severity_by_person
+								)%> (TODO: drag-assign severity by issue by person)
+						</td>
+					</tr>
+					
+							
 				</table>
 			<% end # of form issue (part II) %>
 			

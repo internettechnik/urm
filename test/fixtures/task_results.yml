@@ -5,7 +5,7 @@ one:
   person_id: 1
   start: 2011-12-12 18:50:27
   end: 2011-12-12 18:50:27
-  durationactual: 1
+  actualduration: 1
   completion: 1
   withassistance: false
   notice: MyText
@@ -15,7 +15,7 @@ two:
   person_id: 1
   start: 2011-12-12 18:50:27
   end: 2011-12-12 18:50:27
-  durationactual: 1
+  actualduration: 1
   completion: 1
   withassistance: false
   notice: MyText

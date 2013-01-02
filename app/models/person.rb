@@ -26,7 +26,11 @@ class Person < ActiveRecord::Base
   
   
   validate :init_defaults
-    
+  
+  def to_s
+      "'#{@name}' (alias=#{@alias}, gender=#{@gender})"
+  end
+  
   def summary
     if self.alias.blank?
       self.name.to_s.truncate(15)
@@ -85,6 +89,10 @@ class Person < ActiveRecord::Base
       #if new_record?
         self.itexperience_level ||= "beginner"    # beginner, intermediate, developer
         self.hasusabtestexperience ||= "UNKNOWN"  # yes, no, unknown
+        
+        #self.gender ||= "female" # REQUIRED (for users) OPTIONAL for staff: male / female (see schema *.xsd)
+        # default value is no good idea here...
+        
       #elsif self.itexperience_level.nil?
       #  errors.add(:itexperience_level, "can't be blank on update")
       #elsif self.hasusabtestexperience.nil?

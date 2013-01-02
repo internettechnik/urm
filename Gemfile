@@ -1,3 +1,17 @@
+# 2013-01-01:
+# adjust necessary gem(-version)s and run
+# bundle install --without production
+#
+# then startup mysql
+#   mysql: create database urm, create user, grant rights,...
+#   rake db:setup
+#   rake db:seed 
+# then startup local rails server
+#   view in browser localhost:3000
+
+
+# DETAILS:
+##########
 # for bundle instruction read also:
 # http://gembundler.com/rationale.html
 # and maybe:
@@ -7,7 +21,8 @@
 # jf: see also: http://gembundler.com/gemfile.html
 source 'http://rubygems.org'
 
-# trouble on provider domainfactory (support max rails version 3.0.9)
+# trouble on provider domainfactory 
+#(support max rails version 3.2.5)
 # (note: Ruby 1.8.7 preinstalled)
 # 2012-01-29 we use rails 3.0.x (instead 3.1.x):
 # gem 'rails', '>=3.1'
@@ -18,17 +33,22 @@ source 'http://rubygems.org'
 # occures with gem 'sass-rails', 	">= 3.1.0" activated ??!!
 # gem 'sass-rails', "~> 3.1.0" # "~> 3.2.0"
 # gem 'railties'	, "~> 3.1.0" # "~> 3.2.0.beta"
-gem 'rails', '3.0.9'
+gem 'rails', '3.2.5'
 gem 'railties'
 
 gem 'jquery-rails'
 
 # 2012-01-29 for Javascript Execution via Ruby
 #gem 'execjs'
+# 2013-01-01: needed for therubyracer-installation
+# (i hope this will work on the df-server then...)
+gem 'libv8', '~> 3.11.8' 
 gem 'therubyracer'
 
 # 2012-01-04 for file attachments:
-gem 'paperclip'
+# 2013-01-01 paperclip max vesion 2.7.x for ruby 1.8.7
+# (newer/current paperclip versions require ruby 1.9.x)
+gem 'paperclip', "~> 2.7"
 # for ajax-file-upload:
 # see: http://www.alfajango.com/blog/remotipart-rails-gem/
 gem "remotipart", "~> 1.0"
@@ -54,9 +74,13 @@ gem "remotipart", "~> 1.0"
 #group :development do
 #	gem 'ruby-debug19'
 #end
-
+group :test do
+  gem 'sqlite3'
+end
+# local machine needs mysql2 (mysql does NOT work!)
 group :development do
-	gem 'mysql2', '< 0.3' # for rails 3.0.x (version >= 0.3 works with rails 3 only)
+	gem 'mysql2'  # we try 
+  #gem 'mysql2', '< 0.3' # for rails 3.0.x (version >= 0.3 works with rails 3 only)
 end
 
 group :production do

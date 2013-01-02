@@ -514,11 +514,20 @@ en:
         placeholder_durationscheduled:  "120"
   
   task_results:
-      add_link:    "Add Task Result"
-      add_hint:    "Add a new task completion (result) to this project."
+      add_link:    		"Add Task Completion"
+      add_hint:    		"Add a new task completion (result) to this project."
       update:
-           updated:        "Successfully updated task completion (result) '%{summary}'."
-           
+           updated:     "Successfully updated task completion (result) '%{summary}'."
+      task_result:
+          label_person:     "Person"
+          label_task:       "Task"	
+          label_start:      "Start"
+          label_end:        "End"	
+          label_duration:   "Duration"
+          label_completed:  "Completed"
+          label_with_assistance: "With assistance"
+          label_notice:     "Notice"
+
   transcript_events:
       section_title:    "Transcript Events"
       add_link:         "Add Transcript Entry"

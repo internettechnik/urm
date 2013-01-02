@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-	URM Usability Reporting Manager
-	Copyright (C) 2012 internettechnik 
-	Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
-
 	
 	File: usabml-to-html5.xsl
 	Date: 2011-01-14
 	Author: jf
 	
 	Generates html for given xml data files in format UsabML.
-	Tested with "Safari 5.x" only.
+	Tested with "Safari 5.0.3" only.
 	
 -->
-<xsl:stylesheet version="2.0" 
+<xsl:stylesheet 
 	xmlns:fn="http://www.w3.org/2005/xpath-functions"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	>
-	
+	version="2.0" >
      
 	<!-- The UsabML Stylesheet for HTML5 creation 
 		(for *.xml exported usability test result reports) -->
@@ -106,7 +101,7 @@
 				<li><a href="#results"				>3 Results</a>
 					<ul>
 						<!--li><a href="#issues"		>4.1 All Issues</a></li-->
-						<li><a href="#taskresults"	>3.1 Task Completion</a></li>
+						<li><a href="#taskresults"	>3.1 Task Results</a></li>
 						<li><a href="#res-feedback"	>3.2 Feedback Questionnaire</a></li>
 						<li><a href="#interviews"	>3.3 Interviews</a></li>
 						<li><a href="#transcripts"	>3.4 Test Transcripts</a></li>
@@ -255,14 +250,13 @@
 			
 			<thead>
 				<tr>
-					<!--th>No.</th-->
-					<th>Title</th>
+					<th>No.</th>
 					<th>Heuristics</th>
 				</tr>
 			</thead>
 			
 			<tbody>
-				<xsl:apply-templates select="./heuristics/heuristic"/>
+				<xsl:apply-templates select="./heuristic"/>
 			</tbody>
 			
 		</table>
@@ -270,15 +264,11 @@
 	
 	<xsl:template match="heuristic">
 		<tr>
-			<!--td>
+			<th>
 				<xsl:apply-templates select="attribute::id"/>
-			</td-->
-			<td>
-				<xsl:apply-templates select="./title"/>
-			</td>
-			<td>
-				<xsl:apply-templates select="./description"/>
-			</td>
+			</th>
+			<td><xsl:apply-templates select="./description"/> (<xsl:apply-templates select="./title"
+			/>)</td>
 		</tr>
 	</xsl:template>
 	
@@ -651,7 +641,7 @@
 				<xsl:apply-templates select="./endingcriteria"/>
 			</td>
 			<td>
-				<xsl:apply-templates select="./durationscheduled"/>
+				<xsl:apply-templates select="./scheduledduration"/>
 			</td>
 			<td>
 				<xsl:apply-templates select="./possiblesolutionpath"/>
@@ -714,7 +704,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<xsl:for-each select="device">
+				<xsl:for-each select="setting/device">
 					<xsl:sort select="attribute::devicetype"/>
 					<tr>
 						<td>
@@ -788,7 +778,7 @@
 	<!-- *************** Test (ta-taskresults) *******-->
 	<xsl:template name="taskresults">
 		<a name="taskresults" />
-		<h3>3.1 Task Completion</h3>
+		<h3>3.1 Task Results</h3>
 		Details of all performed tasks by the test users. This includes
 			the actual time/duration and completion status.
 		<a name="table5" />
@@ -817,7 +807,7 @@
 							<xsl:apply-templates select="//report/persons/person[@id=$pid]/alias" />
 						</td>
 						<td>
-							<xsl:apply-templates select="./durationactual"/>
+							<xsl:apply-templates select="./actualduration"/>
 						</td>
 						<td>
 							<xsl:apply-templates select="./completion"/>%
@@ -1032,19 +1022,17 @@
 					<th>-</th>
 					<th>Severity per Person</th>
 					<th>Severity Average</th>
-					<!-- TODO th>Severity Std. Dev.</th -->
+					<th>Severity Std. Dev.</th>
 					
 				</tr>
 			</thead>
 			<tbody>
 				<xsl:for-each select="questionnaireresults/answerforquestion">
-					<!--xsl:sort select="@questionid" data-type="number" does now work with question_23/
-						so we strip off the prefix "question_" and we get "23" and treat this as number!
-					-->
-					<xsl:sort select="substring-after(@questionid, '_')" data-type="number"  />
+					<!--xsl:sort select="@questionid" data-type="number" does now work with question_23/-->
+					<xsl:sort select="@questionid" />
 					<xsl:variable name="qid" select="./@questionid" />
 					<tr>
-						<td><!--xsl:value-of select="substring-after(@questionid, '_')" /-->
+						<td>
 							<!--xsl:apply-templates select="$qid"/--> 							
 							<xsl:apply-templates select="//questionnaire/question[@id=$qid]/description"/>
 						</td>
@@ -1053,14 +1041,13 @@
 						<td> <xsl:apply-templates select="//questionnaire/question[@id=$qid]/rangeto"   /> </td>
 						<td>
 							<xsl:for-each select="./answer">
-								<xsl:apply-templates 
-										select="./value"/> (<xsl:variable name="pid" select="@personid" />
-									<xsl:apply-templates 
-										select="//report/persons/person[@id=$pid]/alias"/>)<br /> 
+								<xsl:apply-templates select="./value"/> 
+								(<xsl:variable name="pid" select="@personid" />
+				<xsl:apply-templates select="//report/persons/person[@id=$pid]/alias"/>)<br /> 
 							</xsl:for-each>
 						</td>
-						<td> <xsl:value-of select="format-number(sum(*) div count(*) ,'#0.00')"/>  </td>
-						<!--td> ... </td-->
+						<td> <!--xsl:value-of select="format-number(sum(*) div count(*) ,'#0.00')"/-->  </td>
+						<td> ... </td>
 					</tr>
 				</xsl:for-each>
 			</tbody>
@@ -1200,7 +1187,7 @@
 			</thead>
 			<tbody>
 			<xsl:for-each select="finding">
-				<xsl:sort select="@priority" order="descending"/>
+				<xsl:sort select="@priority" order="ascending"/>
 			<xsl:if test="@findingtype = 'recommendation'">
 				<xsl:call-template name="onefindingastablewithvideo" />
 			</xsl:if>
@@ -1288,8 +1275,8 @@
 			</td>
 			<td>
 				<!-- TODO:--> <br />
-				Videoclip-Timestamp <xsl:value-of select="./timestamp"/>02:10 (TP2)<br />
-				12:30 (TP7)
+				Videoclip-Timestamp <xsl:value-of select="./timestamp"/>00:00 (TP?)<br />
+				00:00 (TP?)
 			</td>
 		</tr>
 	</xsl:template>
@@ -1407,31 +1394,20 @@
 			</a>
 		</xsl:if>
 		<xsl:if test="@type = 'doc'"><a href="{filename}">
-				<xsl:variable name="fn" select="filename"/>
-				<!-- 
-					ignore the leading path and maybe the trailing params
-					/mediamarkt/images/users.hmtl?7786	
-				
-				Version a (use regex, BUT this works in Oxygen, but not in browsers): 
-				
-				<xsl:analyze-string select="{$fn}" regex="(.*)?/(.*)([?].*)?">
-					<xsl:matching-substring>
-						<xsl:value-of select="regex-group(2)"/>
-					</xsl:matching-substring>
-					<xsl:non-matching-substring>    
-						<xsl:value-of select="filename"/>
-					</xsl:non-matching-substring>
-				</xsl:analyze-string>
-				
-				Version b (original value):
-				<xsl:value-of select="filename"/>
-				
-				Version c (create helper templates for pretty print filename without path and get-params):
-				-->
-		      		<xsl:call-template name="pretty_filename">
-				         <xsl:with-param name="value" select="filename"/>
-				    </xsl:call-template>
-	            </a>
+			<xsl:variable name="fn" select="filename"/>
+			<!-- 
+				ignore the leading path and maybe the trailing params
+				/mediamarkt/images/users.hmtl?7786	
+			-->
+			<xsl:analyze-string select="$fn" regex="(.*)?/(.*)([?].*)?">
+				<xsl:matching-substring>
+					<xsl:value-of select="regex-group(2)"/>
+				</xsl:matching-substring>
+				<xsl:non-matching-substring>    
+					<xsl:text>fail</xsl:text>
+				</xsl:non-matching-substring>
+			</xsl:analyze-string>
+			</a>
 		</xsl:if>
 			<xsl:if test="@type = 'bibentry'">
 				<xsl:value-of select="reference"/>
@@ -1456,62 +1432,6 @@
 		<xsl:value-of select="' '"/>
 		<xsl:value-of select="$tm"/>
 	</xsl:template>
-	
 
-	<xsl:template name="pretty_filename">
-		<xsl:param name="value"/>
-		<!-- first we remove the path until the last slash /dir/subdir/ --> 
-		<xsl:variable name="path_removed">
-	        <xsl:call-template name="remove_path">
-	          <xsl:with-param name="value" select="$value"/>
-	        </xsl:call-template>
-		</xsl:variable>
-		<!-- next we remove any trailing get params ?23345&user=admin -->
-		<xsl:variable name="getparams_removed">
-	        <xsl:call-template name="remove_getparams">
-	          <xsl:with-param name="value" select="$path_removed"/>
-	        </xsl:call-template>
-		</xsl:variable>
-		<xsl:value-of select="$getparams_removed"/>
-	</xsl:template>
 	
-	
-	
-	<xsl:template name="remove_getparams">
-		<!-- pretty print by removing path and get-params
-			/system/attachments/17/original/orient.html?1326048377
-		-->
-        <xsl:param name="value"/>
-		<xsl:choose>
-			<xsl:when test="contains($value, '?')">
-	       		<xsl:value-of select="substring-before($value, '?')" />
-			</xsl:when>
-			<xsl:otherwise>
-				 <xsl:value-of select="$value" />
-			</xsl:otherwise>
-		</xsl:choose>
-    </xsl:template>
-
-	<xsl:template name="remove_path">
-		<!-- pretty print by removing path and get-params
-			/system/attachments/17/original/orient.html?1326048377
-		Note we use recursion to remove every dir/subdir/subsubdir/...
-		-->
-    	<xsl:param name="value" />
-		<xsl:choose>
-			<xsl:when test="contains($value, '/')">
-				<xsl:variable name="path_removed">
-				    <xsl:call-template name="remove_path">
-				         <xsl:with-param name="value" select="substring-after($value, '/')"/>
-				    </xsl:call-template>
-				</xsl:variable>
-				<xsl:value-of select="$path_removed"/>
-			</xsl:when>
-			<xsl:otherwise>
-			    <xsl:value-of select="$value" />
-			</xsl:otherwise>
-		</xsl:choose>
-    </xsl:template>
-
-
 </xsl:stylesheet>

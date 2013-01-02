@@ -4,7 +4,6 @@ xml.heuristicissue(:id => "heuristicissue_"+issue.id.to_s, :heuristicid => "heur
   xml.title                 issue.title                # REQUIRED 
   xml.description           issue.description          # optional
   xml.notice                issue.notice               # optional (INTERNAL info)
-  xml.directon              issue.direction            # UP or DOWN
   xml.reproduce             issue.reproduce            # how to reproduce "search and..."
   # add all "found by" infos (per reviewer)
   issue.persons.each{|p|

@@ -23,5 +23,19 @@ class Issue < ActiveRecord::Base
 	  t+d
   end
   
+  #def formatted_list_of_persons
+  #  result=[]
+  #  self.persons.each{ |p|
+  #    result << "#{p.name} "
+  #  }
+  #  result.join(", ")
+  #end
   
+  def formatted_list_of_severity_by_person
+     result=[]
+     self.severity_ofissuefoundby_persons.each{ |soi|
+       result << "#{soi.person.name}: #{soi.severity}"
+     }
+     result.join(", ")+"."
+    end
 end

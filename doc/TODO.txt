@@ -15,6 +15,7 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * findings of HE: allow to specify finding per heexpert 
 	with severity and reference to heuristic 
 * add git integration to view source-code
+	= hooks to sources code
 * add svn integration to view source-code (optional!)
 * add (input of) references to source-code
 * add buttons to upload forms on the "proper time in the workflow"
@@ -31,7 +32,6 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 		  and recommended solution...)
 		"Positive Findings" (4.4)"
 * edit hints and titles to match wording of keith
-* add German translations
 
 
 == I18N
@@ -96,10 +96,13 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * xml report of "heuristic issues"
 	description, notice, direction, reproduce, severity, 
 	found by (multiple persons), value,... codereference
+* xml-report: export with stylesheet for "buglist"
+	adopt the existing "usabml-to-coderefs.xsl"
 * HTML - Report: adjust xslt for HE to show
 	separate sections for biblio and "normal" appendix files
 * thumb-nail like preview of whole rendered report 
 	always on the page, always up-to-date
+* PDF - Reports: add stylesheets to create pdf reports (FOP?) 
 
 == Feature - Authentication and Authorisation
 
@@ -110,10 +113,13 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * allow password reset via mail with link
 * pretty design login/register/forgottenpwd/assignrules
 
-== Feature - Backup/Restore
+== Feature - Backup/Restore and other (Backend-)Systems
 
 * backup as xml
 * restore by reading xml
+* export issues (xml) for import to bug-tracker
+	REST, WS, SOAP,... Script
+	e.g.: Bugzilla, Trac
 
 == Information / Design / Usability / User Experience
 
@@ -123,6 +129,9 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 * video preview with timestamp input 
 	maybe fancy timestamp selection
 * pretty xsl and css for exported Reports (HTML)
+	select from several styles (XSL)
+	use XSLT (on browser, optional on server)
+	to generate pretty print HTML
 * add info about "overall project status" 
   	missing entries in %, data entered
 	calculate statistics (successful tasks, time for task completion)

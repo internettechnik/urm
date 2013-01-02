@@ -8,12 +8,17 @@
             <xs:sequence>
                 <xs:element name="title">
                     <xs:annotation>
-                        <xs:documentation>The project title should consist of just a few words. For example just the name of the company.</xs:documentation>
+                        <xs:documentation>The project title should consist
+</xs:documentation>
+                        <xs:documentation>of just a few words. For example </xs:documentation>
+                        <xs:documentation>just the name of the company.</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="description">
                     <xs:annotation>
-                        <xs:documentation>The project description gives an overview of content, authors, date etc. in one or two sentences.</xs:documentation>
+                        <xs:documentation>The project description gives an </xs:documentation>
+                        <xs:documentation>overview of content, authors, date </xs:documentation>
+                        <xs:documentation>etc. in one or two sentences.</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:sequence id="reports" maxOccurs="unbounded">
@@ -117,12 +122,12 @@
                 </xs:element>
                 <xs:element ref="questionnaire" maxOccurs="unbounded" minOccurs="0">
                     <xs:annotation>
-                        <xs:documentation>Questionaires are for thinking aloud (TA) tests.</xs:documentation>
+                        <xs:documentation>Questionnaires are for thinking aloud (TA) tests.</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element maxOccurs="unbounded" ref="questionnaireresults" minOccurs="0">
                     <xs:annotation>
-                        <xs:documentation>Results of the questionaires of the thinking aloud (ta) tests.</xs:documentation>
+                        <xs:documentation>Results of the questionnaires of the thinking aloud (ta) tests.</xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element minOccurs="0" name="interviews">
@@ -199,7 +204,7 @@
             </xs:attribute>
             <xs:attribute ref="testtype" use="required">
                 <xs:annotation>
-                    <xs:documentation>The type of a test can be FE formal experiment, HE heuristic evaluation (expert review), or TA thinking aloud.</xs:documentation>
+                    <xs:documentation>The type of a test can be FE formal experiment, HE heuristic evaluation, or TA thinking aloud.</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="order" type="xs:integer"/>
@@ -306,7 +311,7 @@
             <xs:attribute name="persontype" use="required">
                 <xs:annotation>
                     <xs:documentation>HE: persontype: "heexpert" for persons performing an "usability inspection"
-TA: persontype: "user" for persons performing a usability test</xs:documentation>
+TA: persontype: "user" for persons performing an usability test</xs:documentation>
                 </xs:annotation>
                 <xs:simpleType>
                     <xs:restriction base="xs:NMTOKEN">
@@ -334,7 +339,7 @@ TA: persontype: "user" for persons performing a usability test</xs:documentation
                         <xs:documentation>This task has been successfully accomplished, if following is achieved.</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="durationscheduled" minOccurs="0">
+                <xs:element name="scheduledduration" minOccurs="0">
                     <xs:annotation>
                         <xs:documentation>Duration for the task in seconds.</xs:documentation>
                     </xs:annotation>
@@ -352,7 +357,7 @@ TA: persontype: "user" for persons performing a usability test</xs:documentation
             <xs:sequence>
                 <xs:element name="start" type="xs:dateTime" minOccurs="0"/>
                 <xs:element name="end" type="xs:dateTime" minOccurs="0"/>
-                <xs:element name="durationactual" minOccurs="0"/>
+                <xs:element name="actualduration" minOccurs="0"/>
                 <xs:element name="completion">
                     <xs:annotation>
                         <xs:documentation>Specify completion in 0-100%.</xs:documentation>
@@ -438,9 +443,10 @@ TA: persontype: "user" for persons performing a usability test</xs:documentation
     <xs:attribute name="devicetype">
         <xs:simpleType>
             <xs:restriction base="xs:NMTOKEN">
-                <xs:enumeration value="cam"/>
                 <xs:enumeration value="location"/>
-                <xs:enumeration value="pc"/>
+                <xs:enumeration value="cam"/>
+                <xs:enumeration value="hardware"/>
+                <xs:enumeration value="software"/>
             </xs:restriction>
         </xs:simpleType>
     </xs:attribute>

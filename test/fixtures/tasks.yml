@@ -7,7 +7,7 @@ one:
   prerequisite: MyText
   possiblesolutionpath: MyText
   endingcriteria: MyText
-  durationscheduled: 1
+  scheduledduration: 1
 
 two:
   order: 1
@@ -16,4 +16,4 @@ two:
   prerequisite: MyText
   possiblesolutionpath: MyText
   endingcriteria: MyText
-  durationscheduled: 1
+  scheduledduration: 1

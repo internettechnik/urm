@@ -93,8 +93,11 @@ class ReportsController < ApplicationController
     # http://localhost:3000/reports/1.xml?includestyle=true
     @includestyle=params[:includestyle] || false
     
-    puts "DEBUG: zip? '#{params[:zip]}'"
-
+    # TODO: puts "DEBUG: zip? '#{params[:zip]}'"
+    
+    # TODO: specify usabml-he.xsd OR usabml-ta.xsd dependant on the kind of report!!
+    @report_schemafile = "../usabml-#{@report.testtype}.xsd"
+    
     respond_to do |format|
       if ! params[:zip]
         format.xml  # use the custom show.xml.builder
