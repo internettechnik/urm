@@ -16,7 +16,14 @@
 # http://gembundler.com/rationale.html
 # and maybe:
 # http://yehudakatz.com/2011/05/30/gem-versioning-and-bundler-doing-it-right/
-
+#
+# current bundle config can be found in
+#    .bundle/conifg
+#    which contains e.g.
+#        ...
+#        BUNDLE_PATH: vendor/bundle
+#        ....
+# Note also: later we execute everything with bundle exec: e.g. bundle exec rake -T
 
 # jf: see also: http://gembundler.com/gemfile.html
 source 'http://rubygems.org'
