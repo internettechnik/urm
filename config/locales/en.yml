@@ -503,15 +503,15 @@ en:
         label_description:          "Description"
         label_prerequisite:         "Prerequisite"
         label_endingcriteria:       "Success Criteria"
-        label_durationscheduled:    "Duration scheduled"
+        label_scheduledduration:    "Duration scheduled"
         label_possiblesolutionpath: "Possible solution path"
         hint_title:                 "Short description of the task..."
         hint_description:           "Extensive task description..."
         hint_prerequisite:          "State the start condition(s): e.g. browser opened with URL"
         hint_endingcriteria:        "Success on e.g. Found opening hours of the shop..."
-        hint_durationscheduled:     "Seconds scheduled for successful task completion"
+        hint_scheduledduration:     "Seconds scheduled for successful task completion"
         hint_possiblesolutionpath:  "Visit start page then enter search field and..."
-        placeholder_durationscheduled:  "120"
+        placeholder_scheduledduration:  "120"
   
   task_results:
       add_link:    		"Add Task Completion"
