@@ -51,13 +51,7 @@ gem 'aasm'
 group :test do
   gem 'sqlite3'
 end
-group :development do # local machine OS X Mountain Lion (mysql2! not mysql)
-  # local machine needs mysql2 (mysql does NOT work!)
-  # Note: e.g. gem install mysql2 -v '0.3.11' does NOT work on production machine df
-	#gem 'mysql2' 
-  gem 'mysql', "2.8.1"
-end
-group :production do # on production-server hosted by domain factory
+group :development, :production do 
   gem 'mysql', "2.8.1"
 end
 
