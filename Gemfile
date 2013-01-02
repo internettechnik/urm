@@ -49,7 +49,7 @@ gem 'execjs' # we know this works locally AND on df-server !
 # (UNFORTUNATELY therubyrace nor libv8 do NOT work on the df-server)
 #gem 'libv8', '~> 3.11.8' # try again with gem install libv8 --version 3.11.8.0 on production df-server
 gem 'libv8', '3.11.8.0'
-gem 'therubyracer'
+gem 'therubyracer', :require => 'v8'
 
 # 2012-01-04 for file attachments:
 # 2013-01-01 paperclip max vesion 2.7.x for ruby 1.8.7
