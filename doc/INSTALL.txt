@@ -1,10 +1,12 @@
 Usability Reporting Manager (URM)
 
 installation and usage
- ... checkout from (git) repository https://github.com/internettechnik/urm
- ... setup and configure (e.g. mysql) database
- ... run ruby on rails application (on standalone server or e.g. on apache)
- ... use any modern browser to visit the web page
+A ... checkout from (git) repository https://github.com/internettechnik/urm
+B ... setup and configure (e.g. mysql) database
+C ... run ruby on rails application (on standalone server or e.g. on apache)
+D ... use any modern browser to view the web pages
+
+E.... OPTIONAL some production-server-deployment instructions
 
 ---
 by internettechnik, 2010 http://itm.fh-joanneum.at/usabml/urm
@@ -13,50 +15,107 @@ Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 
 
 
-Details:
-========
+Details for the tested versions on OS X Mountain Lion: 
+======================================================
+	ruby 1.8.7 (rvm 1.17.6), 
+	rails 3.2.5, 
+	mysqld 5.5.28, mysqladmin 8.42, mysql 14.14
+	git 1.7.10.2, 
+	bundle 1.2.3
+	ssh ...
 
-for local development:
-======================
 
-install ruby 1.8.7
+A for local development:
+========================
 
-if necessary (depends on the software installed on your local machine
- and the deployment server) add/remove/adjust (versions or) gems 
- stated in "Gemfile"
-  
-bundle install --without production
+A1.) check/install local tools
+	"ruby --version" => ruby 1.8.7
+	"git --version"	=> git 1.x
 
-setup mysql (on local machine):
+
+A2.) clone source code from repo e.g. 
+	"cd /tmp/"
+	"git clone https://github.com/internettechnik/urm.git"
+	"cd urm"
+
+A3.) install all the necessary ruby gems needed for URM
+
+	Optional: if necessary (depends on the software installed on 
+		your local machine and the deployment server) 
+		add/remove/adjust (versions or) ruby libs (gems) 
+		stated in "Gemfile"
+  	
+	"bundle" 
+		(or: "bundle install --without production")
+
+B1.) setup a database a) mysql or b) sqlite3 
+	create the schema for "urm" and also granting access for 
+	a user "user_urm" with password "pwd_urm"
+
+ B1a.) setup mysql on local machine:
 	mysqladmin status
 	mysql --user=root --password=root
-	> create database urm;
-	> CREATE USER 'user_urm'@'localhost' IDENTIFIED BY 'pwd_urm';
-	> GRANT ALL ON *.* TO 'user_urm'@'localhost';
-	> exit;
+	 > create database urm;
+	 > CREATE USER 'user_urm'@'localhost' IDENTIFIED BY 'pwd_urm';
+	 > GRANT ALL ON *.* TO 'user_urm'@'localhost';
+	 > exit;
 	mysql --user=user_urm --password=pwd_urm urm
-	> status
-	(remember the UNIX socket: e.g.: /tmp/mysql.sock )
+	 > status
+	 (remember the UNIX socket: e.g.: /tmp/mysql.sock )
 	
-setup database configuration "config/database.yml":
-	development:
+    setup database configuration "config/database.yml":
+	 development:
 	    adapter: mysql2
 	    database: urm
 		...
 		socket: /tmp/mysql.sock
+ 
+ B1b.) setup sqlite3 database on local machine:
+	TODO explain this option b) with sqlite db
 		
-start creation of database tables and initial data:
+B2.) start creation of database tables and initial data:
 	rake -T
 	rake db:setup
 	rake db:seed		
 
-start local "rails" server		
-	rails server
+B3.) insert some demo-data
+	TODO prepare some demo data (including images)
 
-view in browser:
+C.) start local "rails" server		
+	"rails server"
+
+D.) view in browser:
 	http://0.0.0.0:3000
 	
 	
-for deployment we use capistrano "cap":
-=======================================
+ ENJOY	
 	
+	
+E.) for deployment to a production server 
+=========================================
+	store source code data in git system 
+	automate with capistrano
+
+E0.) email to internettechnik@gmx.at to
+	 get your GitHub developer account added to URM repo
+
+	setup ssh keys to enable push to GitHub
+	see: https://help.github.com/articles/generating-ssh-keys
+
+E1.) commit and push changes to server
+	git commit -a -m "rails version is now 3.2.5"
+	git push
+
+E2.) prepare a server to host your Rails-App
+	(e.g. state example of domain-factory with Phusion Passenger)
+	and how to prepare the database on the server
+	(and e.g. to work with git and cap via ssh)
+	TODO explain how to do this 
+
+	Optional explain how to view data within remote mysql
+		database with the MySQL Admin GUI via a ssh connection
+
+E3.) we use capistrano "cap":
+	"cap deploy"
+	and, if you made changes to the database structure:
+		"cap deploy:migrate 

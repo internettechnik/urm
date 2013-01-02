@@ -4,6 +4,9 @@ URM Usability Reporting Manager
 Copyright (C) 2012 internettechnik 
 Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
 
+== 2013-01-02 v0.1.5
+* updated to work with Rails 3.2.5 (still using ruby 1.8.7)
+
 == 2012-05-10 v0.1.4
 * reports for heuristic evaluation (HE)
 
