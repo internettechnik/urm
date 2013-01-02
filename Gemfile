@@ -39,17 +39,17 @@ gem 'railties'
 gem 'jquery-rails'
 
 # 2012-01-29 for Javascript Execution via Ruby
-gem 'execjs' # we know this works locally AND on df-server !
-# SORRY NO => ERROR on df-server: 
+#gem 'execjs' # we know this works locally AND on df-server !
+#  SORRY NO => ERROR on df-server: 
 #   Could not find a JavaScript runtime. See https://github.com/sstephenson/execjs 
 #    for a list of available runtimes. (ExecJS::RuntimeUnavailable)
 #   try also on server in shell: bundle exec rake -T (to reproduce the error)
 
-# 2013-01-01: needed for therubyracer-installation
-# (UNFORTUNATELY therubyrace nor libv8 do NOT work on the df-server)
-#gem 'libv8', '~> 3.11.8' # try again with gem install libv8 --version 3.11.8.0 on production df-server
-gem 'libv8', '3.11.8.0'
-gem 'therubyracer', :require => 'v8'
+#  2013-01-01: needed for therubyracer-installation
+#  (UNFORTUNATELY therubyrace nor libv8 do NOT work on the df-server)
+# gem 'libv8', '~> 3.11.8' # try again with gem install libv8 --version 3.11.8.0 on production df-server
+#gem 'libv8', '3.11.8.0' # ok v. 3.11.8.0 works on df-server now!
+#gem 'therubyracer', '0.9.9', :require => 'v8' # default: 0.11.0 does NOT compile on df server
 
 # 2012-01-04 for file attachments:
 # 2013-01-01 paperclip max vesion 2.7.x for ruby 1.8.7
