@@ -50,7 +50,6 @@ GEM
     mime-types (1.19)
     multi_json (1.5.0)
     mysql (2.8.1)
-    mysql2 (0.3.11)
     paperclip (2.8.0)
       activerecord (>= 2.3.0)
       activesupport (>= 2.3.2)
@@ -103,7 +102,6 @@ DEPENDENCIES
   authlogic
   jquery-rails
   mysql (= 2.8.1)
-  mysql2
   paperclip (~> 2.7)
   rails (= 3.2.5)
   railties
