@@ -79,6 +79,7 @@ group :test do
 end
 # local machine needs mysql2 (mysql does NOT work!)
 group :development do
+  # Note:  gem install mysql2 -v '0.3.11' does NOT work on production machine df
 	gem 'mysql2'  # we try 
   #gem 'mysql2', '< 0.3' # for rails 3.0.x (version >= 0.3 works with rails 3 only)
 end
