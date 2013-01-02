@@ -98,7 +98,11 @@ group :production do
 	# 2012-01-29:
 	# we use locally 'mysql' with version 2.8.1 and fake the Gemfile.lock to 2.7
 	# in Gemfile.lock: "mysql (2.7)" (only for development on local machine: (2.8.1))
-	gem 'mysql', "2.7"
+
+	#gem 'activerecord-mysql-adapter'
+  # after error on df-server: Please install the mysql adapter: `gem install activerecord-mysql-adapter` (can't activate mysql (~> 2.8.1), already activated mysql-2.7. Make sure all dependencies are added to Gemfile.)
+
+  gem 'mysql', "2.8.1"
 end
 
 # 2012-03-22 for authentication add Authlogic
