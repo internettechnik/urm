@@ -15,7 +15,7 @@ class Issue < ActiveRecord::Base
 	has_many :codereferences_of_issues
 	has_many :codereferences, :through => :codereferences_of_issues
   
-  
+  validates :report_id, :presence => true 
   
 	def summary
 	  t=self.title.to_s.truncate(35) || ""

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120829113917) do
+ActiveRecord::Schema.define(:version => 20130104193412) do
 
   create_table "answers", :force => true do |t|
     t.integer  "report_id"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.datetime "updated_at"
   end
 
+  add_index "answers", ["person_id"], :name => "answers_person_id_idx"
+  add_index "answers", ["question_id"], :name => "answers_question_id_idx"
+  add_index "answers", ["report_id"], :name => "answers_report_id_idx"
+
   create_table "attributes_of_people", :force => true do |t|
     t.integer  "custom_attribute_id"
     t.integer  "person_id"
@@ -29,12 +33,17 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.string   "value"
   end
 
+  add_index "attributes_of_people", ["custom_attribute_id"], :name => "attributes_of_people_custom_attribute_id_idx"
+  add_index "attributes_of_people", ["person_id"], :name => "attributes_of_people_person_id_idx"
+
   create_table "authors", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "report_id"
   end
+
+  add_index "authors", ["report_id"], :name => "authors_report_id_idx"
 
   create_table "codereferences", :force => true do |t|
     t.integer  "report_id"
@@ -49,12 +58,16 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.datetime "updated_at"
   end
 
+  add_index "codereferences", ["report_id"], :name => "codereferences_report_id_idx"
+
   create_table "codereferences_of_issues", :force => true do |t|
     t.integer  "codereference_id"
     t.integer  "issue_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "codereferences_of_issues", ["codereference_id"], :name => "codereferences_of_issues_codereference_id_idx"
 
   create_table "custom_attributes", :force => true do |t|
     t.integer  "order"
@@ -74,12 +87,18 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.datetime "updated_at"
   end
 
+  add_index "devices", ["person_id"], :name => "devices_person_id_idx"
+  add_index "devices", ["report_id"], :name => "devices_report_id_idx"
+
   create_table "document_of_reports", :force => true do |t|
     t.integer  "document_id"
     t.integer  "report_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "document_of_reports", ["document_id"], :name => "document_of_reports_document_id_idx"
+  add_index "document_of_reports", ["report_id"], :name => "document_of_reports_report_id_idx"
 
   create_table "documents", :force => true do |t|
     t.string   "listat"
@@ -101,12 +120,18 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.datetime "updated_at"
   end
 
+  add_index "documents_of_findings", ["document_id"], :name => "documents_of_findings_document_id_idx"
+  add_index "documents_of_findings", ["finding_id"], :name => "documents_of_findings_finding_id_idx"
+
   create_table "documents_of_issues", :force => true do |t|
     t.integer  "document_id"
     t.integer  "issue_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "documents_of_issues", ["document_id"], :name => "documents_of_issues_document_id_idx"
+  add_index "documents_of_issues", ["issue_id"], :name => "documents_of_issues_issue_id_idx"
 
   create_table "eventcodes", :force => true do |t|
     t.string   "code"
@@ -125,6 +150,8 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.datetime "updated_at"
   end
 
+  add_index "findings", ["report_id"], :name => "findings_report_id_idx"
+
   create_table "heuristics", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -133,12 +160,17 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.datetime "updated_at"
   end
 
+  add_index "heuristics", ["report_id"], :name => "heuristics_report_id_idx"
+
   create_table "interviews", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "report_id"
     t.integer  "person_id"
   end
+
+  add_index "interviews", ["person_id"], :name => "interviews_person_id_idx"
+  add_index "interviews", ["report_id"], :name => "interviews_report_id_idx"
 
   create_table "issue_foundby_people", :force => true do |t|
     t.integer  "issue_id"
@@ -147,6 +179,9 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "issue_foundby_people", ["issue_id"], :name => "issue_foundby_people_issue_id_idx"
+  add_index "issue_foundby_people", ["person_id"], :name => "issue_foundby_people_person_id_idx"
 
   create_table "issues", :force => true do |t|
     t.string   "title"
@@ -158,6 +193,9 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.datetime "updated_at"
     t.integer  "report_id"
   end
+
+  add_index "issues", ["heuristic_id"], :name => "issues_heuristic_id_idx"
+  add_index "issues", ["report_id"], :name => "issues_report_id_idx"
 
   create_table "people", :force => true do |t|
     t.string   "name"
@@ -185,6 +223,9 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.string   "role"
   end
 
+  add_index "people", ["persontype_id"], :name => "people_persontype_id_idx"
+  add_index "people", ["report_id"], :name => "people_report_id_idx"
+
   create_table "persontypes", :force => true do |t|
     t.text     "description"
     t.datetime "created_at"
@@ -208,6 +249,8 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.datetime "updated_at"
   end
 
+  add_index "qandas", ["interview_id"], :name => "qandas_interview_id_idx"
+
   create_table "questions", :force => true do |t|
     t.integer  "order"
     t.integer  "report_id"
@@ -219,6 +262,8 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "questions", ["report_id"], :name => "questions_report_id_idx"
 
   create_table "reports", :force => true do |t|
     t.integer  "project_id"
@@ -246,6 +291,8 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.text     "questionnaireresults_summary"
   end
 
+  add_index "reports", ["project_id"], :name => "report_projectid_idx"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -271,6 +318,9 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.datetime "updated_at"
   end
 
+  add_index "severity_ofissuefoundby_people", ["issue_id"], :name => "severity_ofissuefoundby_people_issue_id_idx"
+  add_index "severity_ofissuefoundby_people", ["person_id"], :name => "severity_ofissuefoundby_people_person_id_idx"
+
   create_table "task_results", :force => true do |t|
     t.integer  "report_id"
     t.integer  "person_id"
@@ -285,6 +335,10 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.time     "end"
   end
 
+  add_index "task_results", ["person_id"], :name => "task_results_person_id_idx"
+  add_index "task_results", ["report_id"], :name => "task_results_report_id_idx"
+  add_index "task_results", ["task_id"], :name => "task_results_task_id_idx"
+
   create_table "tasks", :force => true do |t|
     t.integer  "order"
     t.string   "title"
@@ -298,6 +352,8 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.integer  "report_id"
   end
 
+  add_index "tasks", ["report_id"], :name => "tasks_report_id_idx"
+
   create_table "todos", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -307,6 +363,8 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "todos", ["user_id"], :name => "todos_user_id_idx"
 
   create_table "transcript_events", :force => true do |t|
     t.integer  "report_id"
@@ -319,12 +377,20 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.datetime "updated_at"
   end
 
+  add_index "transcript_events", ["eventcode_id"], :name => "transcript_events_eventcode_id_idx"
+  add_index "transcript_events", ["finding_id"], :name => "transcript_events_finding_id_idx"
+  add_index "transcript_events", ["person_id"], :name => "transcript_events_person_id_idx"
+  add_index "transcript_events", ["report_id"], :name => "transcript_events_report_id_idx"
+
   create_table "user_roles", :force => true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "user_roles", ["role_id"], :name => "user_roles_role_id_idx"
+  add_index "user_roles", ["user_id"], :name => "user_roles_user_id_idx"
 
   create_table "users", :force => true do |t|
     t.string   "crypted_password",                           :null => false
@@ -358,5 +424,7 @@ ActiveRecord::Schema.define(:version => 20120829113917) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
   end
+
+  add_index "videos", ["person_id"], :name => "videos_person_id_idx"
 
 end

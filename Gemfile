@@ -33,6 +33,8 @@ source 'http://rubygems.org'
 # support max rails version 3.2.5
 # support max ruby version 1.8.7
 
+gem "rake"
+
 gem 'rails', '3.2.5'
 gem 'railties'
 gem 'jquery-rails'

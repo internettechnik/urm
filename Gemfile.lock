@@ -105,5 +105,6 @@ DEPENDENCIES
   paperclip (~> 2.7)
   rails (= 3.2.5)
   railties
+  rake
   remotipart (~> 1.0)
   sqlite3

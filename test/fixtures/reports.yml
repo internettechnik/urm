@@ -2,14 +2,21 @@
 
 one:
   project_id: 1
+  title: Report One
+  timestamp: 2011-07-25 00:29:23
+  description: This is report no one.
+  executive_summary: Insert ececutive summary on demand
+
+two:
+  project_id: 2
   title: MyString
   timestamp: 2011-07-25 00:29:23
   description: MyText
   executive_summary: MyText
 
-two:
-  project_id: 1
-  title: MyString
+empty:
+  project_id: 3
+  title: Empty-Report - Do not include any data
   timestamp: 2011-07-25 00:29:23
-  description: MyText
-  executive_summary: MyText
+  description: empty
+  executive_summary: please let this report empty!

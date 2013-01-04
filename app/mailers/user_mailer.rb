@@ -1,7 +1,8 @@
 class UserMailer < ActionMailer::Base
   default :from => "john@feiner.at"
   
-  include ActionController::UrlWriter
+  # TODO - check this ... 2013-01-02 commented, otherwise rake tests do not work
+  #include ActionController::UrlWriter
   
   def confirmation_code(user)
       @user = user

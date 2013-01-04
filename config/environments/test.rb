@@ -32,6 +32,10 @@ URM::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  # 2013-01-02 silence the deprecation warnings when running test suite:
+  # (.DEPRECATION WARNING: link_to_function is deprecated and 
+  #   will be removed from Rails 4.0. ...)
+  ActiveSupport::Deprecation.silenced = true
   
   # 2011-12-22 for rails 3.1
   # Configure static asset server for tests with Cache-Control for performance

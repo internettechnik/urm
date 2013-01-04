@@ -4,7 +4,6 @@ one:
   title: MyString
   description: MyText
   heuristic_id: 1
-  direction: MyString
   reproduce: MyText
   notice: MyText
 
@@ -12,6 +11,5 @@ two:
   title: MyString
   description: MyText
   heuristic_id: 1
-  direction: MyString
   reproduce: MyText
   notice: MyText

@@ -10,7 +10,8 @@ module QuestionHelper
     return if report.nil?
     qs=report.questions.sort
     #pluralize(qs.size,I18n.t(:'questions.question.question') ) + 
-    "(#{qs.size}): "+qs.collect {|a| a.order.to_s+": "+a.description.truncate(25)}.join(", ")
+    "(#{qs.size}): "+qs.collect {|a| 
+        a.order.to_s+": "+a.description.to_s.truncate(25)}.join(", ")
   end
   
 end
