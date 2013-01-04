@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130104193412) do
+ActiveRecord::Schema.define(:version => 20130104205547) do
 
   create_table "answers", :force => true do |t|
     t.integer  "report_id"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20130104193412) do
   end
 
   add_index "codereferences_of_issues", ["codereference_id"], :name => "codereferences_of_issues_codereference_id_idx"
+  add_index "codereferences_of_issues", ["issue_id"], :name => "codereferences_of_issues_issue_id_idx"
 
   create_table "custom_attributes", :force => true do |t|
     t.integer  "order"
