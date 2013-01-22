@@ -3,7 +3,8 @@
 	<head>
 	  	<title><%= t(:title) %></title>
 		<%= stylesheet_link_tag    	"application",
-		 							"jquery_ui_overcast/jquery-ui-1.8.16.custom"  %>
+		 							"jquery_ui_overcast/jquery-ui-1.8.16.custom",
+									:media => "all"   %>
 		
 		<%# only ok with Rails 3.1.x and assets pipeline
 			= javascript_include_tag "application" 
@@ -30,8 +31,11 @@
 		<div id="navigation">
 			<%= link_to_unless_current t(:'home'), 
 					:controller => 'projects', :action=>'index', :title => t(:'hint_home') %>&nbsp;|&nbsp;
-			<%= link_to_function t(:'about.about'), 
+			<%# link to function is deprecated 
+				= link_to_function t(:'about.about'), 
 				"showAboutDialog();", :title=> t(:'about.hint') %>
+			<%= link_to t(:'about.about'), "#",
+					:onclick => "showAboutDialog();", :title=> t(:'about.hint') %>
 				<div id="aboutdialog" class="ui_dialog" title="<%= t(:'about.box_title') %>" ><br />
 					U R M 
 					<br />

@@ -83,4 +83,16 @@ URM::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   
+  
+  # 2013-01-21 for pdf(kit)
+  config.middleware.use "PDFKit::Middleware"#, :print_media_type => true
+  PDFKit.configure do |config|
+    config.wkhtmltopdf = `which wkhtmltopdf`.chomp # Do not forget to remove the trailing linebreak!
+    config.default_options = {
+      :page_size => 'A4',
+      :print_media_type => true,
+    }
+  end
+  
+  
 end

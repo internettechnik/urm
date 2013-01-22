@@ -1,3 +1,4 @@
+
 /* URM Usability Reporting Manager
  * Copyright (C) 2012 internettechnik 
  * Licensed under the GNU GPLv3 (http://www.gnu.org/licenses/gpl.txt) license.
@@ -589,3 +590,34 @@ label{
 #errorExplanation{
 	color: red;
 }
+
+
+/* TODO: 
+	ajust output for pdf (if you like) 
+	see PDFkit rendering HTML to pdf
+*/
+
+@media print {
+  body {
+    background-color: #FFF; /* we print on white paper! */ 
+  }
+
+/* TODO: check if we need further pdf-print adaptations 
+
+  #container {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+  
+  #line_items {
+    page-break-before: always;
+  }
+  
+  #pdf_link {
+    display: none;
+  }
+}
+
+*/

@@ -57,6 +57,17 @@ URM::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
   
+  # 2013-01-21 for pdf(kit)
+  # https://github.com/pdfkit/PDFKit
+  config.middleware.use "PDFKit::Middleware", :print_media_type => true
+  PDFKit.configure do |config|
+    config.wkhtmltopdf ="/usr/local/opt/wkhtmltopdf/bin/wkhtmltopdf"
+    config.default_options = {
+      :page_size => 'A4',
+      :print_media_type => true,
+    }
+  end
+  
   
 end
 

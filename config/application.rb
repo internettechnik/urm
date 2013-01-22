@@ -69,6 +69,5 @@ module URM
     # 2012-03-22 for authentication with authlogic
     config.gem "authlogic"
     
-    
   end
 end
